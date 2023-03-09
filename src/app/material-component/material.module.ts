@@ -38,6 +38,7 @@ import { MyPetsComponent } from './my-pets/my-pets.component';
   declarations: [
     MyPetsComponent,
     AddNewPetComponent,
+    
 
   ]
 })

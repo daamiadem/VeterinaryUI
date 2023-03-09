@@ -17,7 +17,6 @@ import { DemoMaterialModule } from './demo-material-module';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import { MatCardModule } from '@angular/material/card';
-import { TreatmentListComponent } from './treatment-list/treatment-list.component';
 
 @NgModule({
   declarations: [
