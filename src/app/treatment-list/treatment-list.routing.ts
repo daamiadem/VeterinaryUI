@@ -10,7 +10,7 @@ const routes: Routes = [
     },
    
     {
-      path: 'treatment-list',
+      path: '**',
       component: TreatmentListComponent,
       data: {
         title: 'treatment-list',

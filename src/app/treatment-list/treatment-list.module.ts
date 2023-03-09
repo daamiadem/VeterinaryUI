@@ -12,6 +12,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { DatePipe }    from '../pipe/date.pipe';
 import { TreatmentListComponent } from './treatment-list.component';
+import { TreatmentListRoutingModule } from './treatment-list.routing';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { TreatmentListComponent } from './treatment-list.component';
     SharedModule,
     MatCardModule,
     MatGridListModule,
+    TreatmentListRoutingModule,
     CalendarModule.forRoot({
     provide: DateAdapter,
     useFactory: adapterFactory
