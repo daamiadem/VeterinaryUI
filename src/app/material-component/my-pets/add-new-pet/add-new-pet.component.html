@@ -23,11 +23,11 @@
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput placeholder="Id card *" formControlName="idCard">
-                        <mat-error *ngIf="f.customer.controls.idCard.hasError('pattern')">
+                        <input matInput placeholder="Id card *" formControlName="idNumber">
+                        <mat-error *ngIf="f.customer.controls.idNumber.hasError('pattern')">
                             id card must be <strong>a number</strong>
                         </mat-error>
-                        <mat-error *ngIf="f.customer.controls.idCard.hasError('required')">
+                        <mat-error *ngIf="f.customer.controls.idNumber.hasError('required')">
                             id card is <strong>required</strong>
                         </mat-error>
                     </mat-form-field>

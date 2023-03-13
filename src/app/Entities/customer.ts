@@ -2,7 +2,7 @@ export class Customer {
     id? : number|string;
     firstname?: string;
     lastname?: string;
-    idCard?: string;
+    idNumber?: string;
     phoneNumber?: string;
     mail?: string;
 }

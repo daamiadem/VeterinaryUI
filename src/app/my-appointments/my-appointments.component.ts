@@ -22,6 +22,7 @@ import {
 } from 'angular-calendar';
 import { Treatment } from 'src/app/Entities/pets';
 import { PetService } from '../Services/pet.service';
+import { TreatmentService } from '../Services/treatment.service';
 
 
 
@@ -86,7 +87,7 @@ export class MyAppointmentsComponent implements OnInit {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal, private petService: PetService) { }
+  constructor(private modal: NgbModal, private petService: PetService , private treatmentService : TreatmentService) { }
 
   ngOnInit(): void {
     this.getTreatments();
@@ -140,7 +141,7 @@ export class MyAppointmentsComponent implements OnInit {
   }
 
   getTreatments() {
-    this.petService.getAllTreatments().subscribe((response) => {
+    this.treatmentService.getAllTreatments().subscribe((response) => {
       this.treatments = response;
       this.treatments.forEach(element => {
         // @ts-ignore: Object is possibly 'null'.

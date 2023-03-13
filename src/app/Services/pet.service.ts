@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { Pets } from '../Entities/pets';
+import { Treatment } from '../Entities/treatment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +13,36 @@ export class PetService {
 
   }
 
-  getAllPets(): Observable<any> {
-    return this.http.get<any>(` http://localhost:3000/pets`)
+  getAllPets(): Observable<Pets[]> {
+    return this.http.get<Pets[]>(`http://localhost:8092/api/v1/pets`)
   }
-  getAllTreatments(): Observable<any> {
-    return this.http.get<any>(` http://localhost:3000/treatment`)
-  }
+  
   getPetById(id:number): Observable<any> {
-    return this.http.get<any>(` http://localhost:3000/pets/${id}`)
+    return this.http.get<any>(`http://localhost:8092/api/v1/pets/${id}`)
   }
-  getPetOwnerById(id:number|string|undefined): Observable<any> {
-    return this.http.get<any>(` http://localhost:3000/owner/${id}`)
-  }
-  getPetTreatmentById(id:number|string|undefined): Observable<any> {
-    return this.http.get<any>(` http://localhost:3000/treatment/${id}`)
-  }
+
   savePet(pet:any): Observable<any> {
-    return this.http.post<any>(` http://localhost:3000/pets`,pet)
+    return this.http.post<any>(`http://localhost:8092/api/v1/pets/add`,pet)
   }
-  saveOwner(owner:any): Observable<any> {
-    return this.http.post<any>(` http://localhost:3000/owner`,owner)
+
+
+  getPetOwnerById(id:number|string|undefined): Observable<any> {
+    return this.http.get<any>(`http://localhost:8092/api/v1/petsCustomer/${id}`)
   }
-  saveTreatment(treatment:any): Observable<any> {
-    return this.http.post<any>(` http://localhost:3000/treatment`,treatment)
+
+  getPetTreatmentById(id:number|string|undefined): Observable<any> {
+    return this.http.get<any>(`http://localhost:8092/api/v1/PetsTreatments/${id}`)
   }
+  
+  saveOwner(Customer:any): Observable<any> {
+    return this.http.post<any>(`http://localhost:8092/api/v1/customer`,Customer)
+  }
+  
   updatePetTreatment(pet:any): Observable<any> {
-    return this.http.put<any>(` http://localhost:3000/pets/${pet.id}`,pet)
+    return this.http.put<any>(`http://localhost:8092/api/v1/pets/updatePetTreatment/${pet.id}`,pet.treatments)
   }
+
+
+
+
 }

@@ -6,6 +6,7 @@ import { PetService } from 'src/app/Services/pet.service';
 import { Message } from 'primeng/api';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TreatmentService } from 'src/app/Services/treatment.service';
 
 @Component({
   selector: 'app-dialog-overview-example-dialog',
@@ -28,7 +29,7 @@ import { Router } from '@angular/router';
 export class CustomConfirmationDialog {
   constructor(
     public dialogRef: MatDialogRef<CustomConfirmationDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private petService: PetService, private router: Router
+    @Inject(MAT_DIALOG_DATA) public data: any,private treatmentService : TreatmentService, private petService: PetService, private router: Router
   ) { }
 
   onNoClick(): void {
@@ -45,7 +46,7 @@ export class CustomConfirmationDialog {
         this.data.pet = data;
         this.data.treatments.forEach((treatment: { pet: any; }) => {
           treatment.pet = this.data.pet;
-          this.petService.saveTreatment(treatment).subscribe((response) => {
+          this.treatmentService.saveTreatment(treatment).subscribe((response) => {
             this.data.pet.treatments?.push(response)
             this.petService.updatePetTreatment(this.data.pet).subscribe((response) => {
 
@@ -108,7 +109,7 @@ export class AddNewPetComponent implements OnInit {
       customer: this.formBuilder.group({
         firstname: [, [Validators.required]],
         lastname: [, [Validators.required]],
-        idCard: [, [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
+        idNumber: [, [Validators.required, Validators.pattern(/^[0-9]\d*$/)]],
         phoneNumber: [, [Validators.required]],
       }),
       pet: this.formBuilder.group({
